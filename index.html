@@ -1,0 +1,31 @@
+<style>
+  #animation img {
+    display: none;
+  }
+  #animation img:first-child {
+    display: block;
+  }
+</style>
+
+<body>
+  <div id="animation">
+    <img src="comma_1.png">
+    <img src="comma_2.png">
+    <img src="comma_3.png">
+  </div>
+</body>
+
+<script>
+  function animate() {
+
+    const frames = document.getElementById("animation").children;
+    const frameCount = frames.length;
+    let i = 0;
+    setInterval(function() {
+      frames[i % frameCount].style.display = "none";
+      frames[++i % frameCount].style.display = "block";
+    }, 200);
+  }
+
+  animate()
+</script>
