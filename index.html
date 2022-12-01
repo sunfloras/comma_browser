@@ -1,30 +1,75 @@
 <style>
+  #animation {
+    position: fixed;
+    bottom: 0;
+    animation: walk 10s infinite;
+
+  }
+
   #animation img {
     display: none;
+    width: 200px;
+
+    /*left: calc(100vw - 200px);*/
+    /*animation-timing-function: linear;*/
+
+    /*animation-name: walk;
+    animation-duration: 10s;*/
   }
+
   #animation img:first-child {
     display: block;
   }
+
+  @keyframes walk {
+    0% {
+      left: 0;
+      transform: rotateY(180deg);
+    }
+
+    48% {
+      transform: rotateY(180deg);
+    }
+
+    50% {
+      left: calc(100vw - 200px);
+      transform: rotateY(0deg);
+    }
+
+    98% {
+      transform: rotateY(0deg);
+    }
+
+    100% {
+      left: 0;
+      transform: rotateY(180deg);
+    }
+  }
+
+  /*@keyframes walk{
+    from{left: calc(100vw - 200px);}
+    to{right: calc(100vw - 200px;)}
+  }*/
 </style>
 
 <body>
   <div id="animation">
-    <img src="comma_1.png">
-    <img src="comma_2.png">
-    <img src="comma_3.png">
+    <img src="comma_1.png" alt="comma walking">
+    <img src="comma_2.png" alt="comma walking">
+    <img src="comma_3.png" alt="comma walking">
   </div>
 </body>
 
 <script>
   function animate() {
 
-    const frames = document.getElementById("animation").children;
+    const frames = document.querySelectorAll("#animation img");
     const frameCount = frames.length;
     let i = 0;
     setInterval(function() {
       frames[i % frameCount].style.display = "none";
       frames[++i % frameCount].style.display = "block";
-    }, 200);
+    }, 1000);
   }
 
   animate()
